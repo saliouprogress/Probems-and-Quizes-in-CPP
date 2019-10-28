@@ -1,6 +1,6 @@
 #include <iostream>
 
-
+#include <algorithm>
 using namespace std;
 
 
@@ -24,7 +24,7 @@ for (int i = 0; i < sizeof(Array)/sizeof(Array[0]); i++)
   cout << ProductArray[i] << endl;
 }
 
-for (int j = 1; j  < sizeof(Array)/sizeof(Array[0]) -1; j++)
+for (int j = 1; j  < sizeof(Array)/sizeof(Array[0]); j++)
 {
   int temp = Array[0];
   Array[0] = Array[j]; 
@@ -34,9 +34,9 @@ for (int j = 1; j  < sizeof(Array)/sizeof(Array[0]) -1; j++)
     product *=Array[i];
   }
   
-  ProductArray[i] = product;  
-  cout << ProductArray[i] << endl;
-  sort(Array.begin(),Array.end();
+  ProductArray[j] = product;  
+  cout << ProductArray[j] << endl;
+  //sort(Array);
 }
   return 0;
 }
