@@ -23,13 +23,13 @@ bool FindSubset(vector<int> bigarray, vector<int> subarray)
   
   if (count >= subarray.size()) 
   { 
-    cout << "Suset is inside set: " << count << endl;
+    cout << "Sub is a subset of Big: " << count << endl;
     return true;
   }
   
   else
   {
-    cout << "Suset is not inside set: " << count << endl;
+    cout << "Sub is not a subset of Big: " << count << endl;
   	return false;
   }
   
@@ -37,7 +37,7 @@ bool FindSubset(vector<int> bigarray, vector<int> subarray)
 int main() 
 { 
 
-  vector<int>  big = {11, 1, 13, 21, 3, 7}, sub = {11, 3, 7, 1, 11};
+  vector<int>  big = {10, 5, 2, 23, 19}, sub = {19, 5, 3};
   
   cout << FindSubset(big,sub) ;
 
