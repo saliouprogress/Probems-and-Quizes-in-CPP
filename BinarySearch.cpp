@@ -6,34 +6,40 @@ using namespace std;
 
 int devideConquer(vector<int> tempVec, int lowIndex, int highIndex, int num)
 { 
-  int index = (highIndex - lowIndex)/2;
-  if (tempVec[index] == num ) { return true;}
+  int index ;
+  index = (highIndex + lowIndex)/2;
+  
+  if (tempVec[index] == num ) 
+  { 
+    cout << "Element is present at index: " << index << endl;
+    return tempVec[index];
+  }
+  
+  else if ((highIndex - lowIndex <= 1 ) && (tempVec[highIndex] != num) && (tempVec[lowIndex] != num)) 
+  { 
+    cout << num << " Element is not present In This Array." << endl; 
+    return false;
+  }
+   
   else if ((tempVec[index] != num) && (num > tempVec[index] )) 
   {
-    cout << "Bigger" << endl; 
-    lowIndex = index; 
-    return = devideConquer(tempVec, lowIndex, highIndex, num);
+    lowIndex = index;
+    return devideConquer(tempVec, lowIndex, highIndex, num );
   }
+  
   else if ((tempVec[index] != num) && (num < tempVec[index])) 
   { 
-    cout << "Smaller" << endl; 
     highIndex = index;
-    return = devideConquer(tempVec, index, num );
-  } 
-  else if ((highIndex == lowIndex) && (tempVec[index] != num)) { cout << "Not Included" << endl;}
-  
-  return index;
+    return devideConquer(tempVec, lowIndex, highIndex, num );
+  }
+ 
 }
-int Binary(vector<int> vec, int num)
-{ 
-  int lowIndex = 0, highIndex = vec.size(), tempIndex; vector<int> tempVec = vec;
-  sort(tempVec.begin(),tempVec.end());
-  tempIndex = devideConquer(tempVec, lowIndex, highIndex, num );
-  return tempIndex;
-}
+
 int main()
 {
-  vector<int> tempVec = {5,6 ,8 ,1 ,-2 ,3 ,-4}; int num = 1;    
-  cout << Binary(tempVec, num);
+  vector<int> tempVec = {3,3,3,3,3,3,3, -2, 4}; int num = -2;
+  int lowIndex = 0, highIndex = tempVec.size(), tempIndex;
+  sort(tempVec.begin(),tempVec.end());
+  tempIndex = devideConquer(tempVec, lowIndex, highIndex, num );
   return 0;
 }
