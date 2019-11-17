@@ -7,7 +7,7 @@ using namespace std;
 
 int DeleteDuplicates(vector<int> A_ptr, int m, int x)
 {
-  int The_min = min(2,m);
+  int The_min = min(3,m);
   vector<int> A = A_ptr; // Assign input to a temporary vector
   if (A.empty()) // check if vector is empry then return 0, otherwise move to next step.
   { 
@@ -22,11 +22,15 @@ int DeleteDuplicates(vector<int> A_ptr, int m, int x)
         cout << i << ", " << write_index-1 << endl;
         A[write_index++] = A[i];
       }
-    else
-    {
-      count++;
-      if ( count <= The_min)
-        
+      else
+      { 
+        count++;
+        if (count <= The_min)
+        { 
+          cout << i << ", " << write_index-1 << endl;
+          A[write_index++] = A[i];
+        }
+      }
     
     //write_index++;
   }
@@ -41,7 +45,7 @@ int DeleteDuplicates(vector<int> A_ptr, int m, int x)
 
 int main()
 {
-  vector<int> mar = {2,3,5,5,7,11,11,11,13};   
+  vector<int> mar = {2,3,5,5,7,11,11,11,11,13};   
   //std::vector<int>* mar = new std::vector<int>();
   /*
   mar->push_back(0);
