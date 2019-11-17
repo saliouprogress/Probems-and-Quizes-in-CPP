@@ -17,15 +17,24 @@ int DeleteDuplicates(vector<int> A_ptr, int m, int x)
   int write_index = 1; // create index counter to check if elements are not duplicates
   for (int i = 1; i < A.size(); ++i) // loop through array from beginning one element at a time
   {
-    if ( A[i] == x) {count++;}
-    write_index++;
-   
+      if (A[i] != x)
+      { 
+        cout << i << ", " << write_index-1 << endl;
+        A[write_index++] = A[i];
+      }
+    else
+    {
+      count++;
+      if ( count <= The_min)
+        
+    
+    //write_index++;
   }
-  cout << The_min << endl;
+  //cout << The_min << endl;
   for (int i = 0; i < A.size(); ++i)
   {
-    //if (i >= write_index) { A[i] = 0;}
-    cout << A[i] << endl;
+    if (i >= write_index) { A[i] = 0;}
+    cout << "Array " << A[i] << endl;
   }
   return write_index;
 }
