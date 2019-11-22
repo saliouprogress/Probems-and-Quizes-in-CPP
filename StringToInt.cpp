@@ -6,13 +6,13 @@ using namespace std;
 int StringToInt(string& str)
 {
   int result = 0;
-  for (int i = (str[0] == '-') ? 1 : 0; i < str.size(); i++)
+  for (int i = (str.front() == '-') ? 1 : 0; i < str.size(); i++)
   {
     const int digit = str[i] - '0';
     result = result * 10 + digit;
     cout << digit << " " << str[i] << endl;
   }
-  return (str[0] == '-') ? -result : result;
+  return (str.front() == '-') ? -result : result;
 }
 
 
