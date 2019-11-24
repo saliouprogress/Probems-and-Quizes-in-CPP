@@ -16,7 +16,7 @@ int SpreadsheetColumn(int num)
     num = num - base;
     ++i;
   }
-  /*
+  
   for ( int p = 0; p < k; p++) 
   {
     cout << (char)( k + 65);
@@ -25,7 +25,7 @@ int SpreadsheetColumn(int num)
    for ( int p = 0; p < j; p++) 
   {
     cout << (char)(j + 65);
-  }*/
+  }
   cout <<(char)(num + 64 ) << endl;
   return num;
 }
