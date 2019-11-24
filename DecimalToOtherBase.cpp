@@ -28,7 +28,8 @@ int DecimalToOtherBase(const string & num, int n, int base)
   }
   
   for (int j = i - 1; j >= 0; j--) 
-    cout << j << " " << NumToString[j] << endl;
+    cout << j << " " << NumToString[j] << " j " << endl;
+    
  	cout << endl;
   return n; // == (is_negative ? -n : n);
 }
@@ -36,7 +37,7 @@ int DecimalToOtherBase(const string & num, int n, int base)
 
 int main()
 {
-  int num = 200, base = 2; string mynumber = "-123456";
+  int num = 702, base = 26; string mynumber = "702";
   cout << DecimalToOtherBase(mynumber, num, base) << endl;
   
   return 0;
