@@ -1,40 +1,46 @@
 #include <iostream>
-#include <string>
-#include <algorithm>
+//#include <vector>
+//#include <string>
+//#include <algorithm>
 
 using namespace std;
 
 
-int SpreadsheetColumn(int num)
-{
-  int base = 26; string NumToString[32];
-  int i = 1, j = 0, k = 0;
-  while (num > base)
+int DecimalToOtherBase(const string & num, int n, int base)
+{ 
+  bool is_negative = (num[0] == '-' ? 1: 0);
+  int StringToNum = 0, digit; string NumToString[32];
+  for (int i = is_negative; i < num.size(); i++)
+  {
+    digit = num[i] - '0';
+    StringToNum = StringToNum *10 +  digit;
+  }
+  cout << "StringToNum " << StringToNum << endl; 
+  n = StringToNum;
+  int tempVec[32];
+  int i = 0;
+  while (n  > 0) 
   { 
-    j = i/base;
-    if (j > 26) { j = 0; k = 1; }
-    num = num - base;
-    ++i;
+    tempVec[i] = n % base;
+    if (n % base == 0) { NumToString[i] = + (char)('Z'); n = n-1; }
+    else{ NumToString[i] = + (char)(n % base + 'A'-1); }
+    cout << i << " " << n % base << " " << (char)(n % base + 'A'-1) << endl;
+    n = n /base; 
+    i++;             
   }
   
-  for ( int p = 0; p < k; p++) 
-  {
-    cout << (char)( k + 65);
-  }
-  
-   for ( int p = 0; p < j; p++) 
-  {
-    cout << (char)(j + 65);
-  }
-  cout <<(char)(num + 64 ) << endl;
-  return num;
+  for (int j = i - 1; j >= 0; j--) 
+    cout << NumToString[j] << " " << tempVec[j] << endl;
+    
+ 	cout << endl;
+  return n; // == (is_negative ? -n : n);
 }
+
 
 int main()
 {
-  int num = 5000;
+  int num = 702, base = 26; string mynumber = "702";
+  cout << DecimalToOtherBase(mynumber, num, base) << endl;
   
-  cout << SpreadsheetColumn(num) << endl;
-
   return 0;
 }
