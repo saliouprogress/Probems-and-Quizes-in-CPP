@@ -8,23 +8,31 @@ using namespace std;
 int SpreadsheetColumn(int num)
 {
   int base = 26; string NumToString[32];
-  int i = 1, j = 1;
+  int i = 1, j = 0, k = 0;
   while (num > base)
   { 
-    cout << i << " " << num << " " << num % base << endl;
-    if (i > base) { j++;}
+    j = i/base;
+    if (j > 26) { j = 0; k = 1; }
     num = num - base;
     ++i;
   }
+  /*
+  for ( int p = 0; p < k; p++) 
+  {
+    cout << (char)( k + 65);
+  }
   
-  cout << i << " " << j << " " << num << endl;
-  cout << (char)(j + 64 ) << (char)(num + 64 ) << endl;
+   for ( int p = 0; p < j; p++) 
+  {
+    cout << (char)(j + 65);
+  }*/
+  cout <<(char)(num + 64 ) << endl;
   return num;
 }
 
 int main()
 {
-  int num = 10300000;
+  int num = 5000;
   
   cout << SpreadsheetColumn(num) << endl;
 
