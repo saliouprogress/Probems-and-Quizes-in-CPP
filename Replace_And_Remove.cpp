@@ -6,40 +6,31 @@
 using namespace std;
 
 
-int DecimalToOtherBase(const string & num, int n, int base)
+char DecimalToOtherBase(const string & num, char replace, char remove, char substitute)
 { 
-  bool is_negative = (num[0] == '-' ? 1: 0);
-  int StringToNum = 0, digit; string NumToString[32];
-  for (int i = is_negative; i < num.size(); i++)
-  {
-    digit = num[i] - '0';
-    StringToNum = StringToNum *10 +  digit;
-  }
-  cout << "StringToNum " << StringToNum << endl; 
-  n = StringToNum;
   int tempVec[32];
-  int i = 0;
-  while (n  > 0) 
+  int i = 0, countReplace = 0, countRemove = 0, current = 0, next = current + 1;
+  while (num[i] != '\0') 
   { 
-    tempVec[i] = n % base;
-    if (n % base == 0) { NumToString[i] = + (char)('Z'); n = n-1; }
-    else{ NumToString[i] = + (char)(n % base + 'A'-1); }
-    n = n /base; 
+    if (num[i] == replace) { countReplace += 2; }
+    if (num[i] == remove) { countRemove++;  current = i; next = current +1; num[current] = num[next]; 
+                           //next++;
+                          }
+    
+    cout << num[i] << " " << countReplace << " " << countRemove << endl ;
+    next++;
     i++;             
   }
   
-  for (int j = i - 1; j >= 0; j--) 
-    cout << NumToString[j] << " " << tempVec[j] << endl;
-    
- 	cout << endl;
-  return n;
+  cout << endl;
+  return replace;
 }
 
 
 int main()
 {
-  int num = 702, base = 26; string mynumber = "449";
-  cout << DecimalToOtherBase(mynumber, num, base) << endl;
+  char replace = 'a', remove = 'b' , substitute = 'd'; string mystring = "acdbbca";
+  cout << DecimalToOtherBase(mystring, replace, remove, substitute) << endl;
   
   return 0;
 }
