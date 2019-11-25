@@ -28,7 +28,7 @@ char DecimalToOtherBase(string num, char replace, char remove, char substitute)
 
 int main()
 {
-  char replace = 'a', remove = 'b' , substitute = 'd'; string mystring = "acdca";
+  char replace = 'a', remove = 'b' , substitute = 'd'; string mystring = "bacdbbca";
   cout << DecimalToOtherBase(mystring, replace, remove, substitute) << endl;
   
   return 0;
