@@ -13,9 +13,9 @@ char DecimalToOtherBase(const string & num, char replace, char remove, char subs
   while (num[i] != '\0') 
   { 
     if (num[i] == replace) { countReplace += 2; }
-    if (num[i] == remove) { countRemove++;  current = i; next = current +1; num[current] = num[next]; 
-                           //next++;
-                          }
+    else if (num[i] == remove) { num[i] == num[i + ++countRemove]; i--;
+                               }
+    //else { num[i] == num[i + countRemove]; }
     
     cout << num[i] << " " << countReplace << " " << countRemove << endl ;
     next++;
@@ -29,7 +29,7 @@ char DecimalToOtherBase(const string & num, char replace, char remove, char subs
 
 int main()
 {
-  char replace = 'a', remove = 'b' , substitute = 'd'; string mystring = "acdbbca";
+  char replace = 'a', remove = 'b' , substitute = 'd'; string mystring = "acdbbbca";
   cout << DecimalToOtherBase(mystring, replace, remove, substitute) << endl;
   
   return 0;
