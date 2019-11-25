@@ -24,7 +24,6 @@ int DecimalToOtherBase(const string & num, int n, int base)
     tempVec[i] = n % base;
     if (n % base == 0) { NumToString[i] = + (char)('Z'); n = n-1; }
     else{ NumToString[i] = + (char)(n % base + 'A'-1); }
-    cout << i << " " << n % base << " " << (char)(n % base + 'A'-1) << endl;
     n = n /base; 
     i++;             
   }
@@ -33,13 +32,13 @@ int DecimalToOtherBase(const string & num, int n, int base)
     cout << NumToString[j] << " " << tempVec[j] << endl;
     
  	cout << endl;
-  return n; // == (is_negative ? -n : n);
+  return n;
 }
 
 
 int main()
 {
-  int num = 702, base = 26; string mynumber = "702";
+  int num = 702, base = 26; string mynumber = "449";
   cout << DecimalToOtherBase(mynumber, num, base) << endl;
   
   return 0;
