@@ -22,7 +22,7 @@ int main()
   //cout << sum << endl;
   
   
-  vector<int> mar1 = {3, 0, 1, 3, 0, 5};
+  vector<int> mar1 = {0, 0, 0, 0, 0, 5};
   int first_max = 0, second_max = 0, index = 0;
   
   for (int i = 0; i < mar1.size(); i++)
