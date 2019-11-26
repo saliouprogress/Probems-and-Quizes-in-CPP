@@ -5,17 +5,15 @@
 
 using namespace std;
 
-string RemoveElement( int i, int remove, string num)
+string RemoveElement( int i, string num)
 {
-   int current = 0;
   while (num[i] != NULL) 
   {
-     if (num[i] == remove) 
-     {num[i] = num[i + ++current];}
-     else { num[i] = num[i + current];}
+     num[i] = num[i +1];
      i++; 
   }
-  //for (int x = i; x >=0; --x) { cout <<  num[x] <<  " " << x << endl;}
+  for (int x = i; x >=0; --x) { cout <<  num[x] <<  " ";}
+  cout << endl;
   return num;
 }
 
@@ -27,22 +25,21 @@ int DecimalToOtherBase(string num, char replace, char remove, char substitute)
   {
     if (num[i] == remove) 
     { 
-      num = RemoveElement( i, remove, num); ++current;
-      //cout << num[i] <<  " " << i << endl;
+      num = RemoveElement( i, num);
+      i = i-1;
     }
-    else{ num[i] = num[ i + current];}
     i++; 
-    
   }
   //tempVec[i] = num[i];
-  for (int x = i; x >=0; --x) { cout <<  num[x] <<  " " << x << endl;}
+  for (int x = 0; x < i; x++) { cout <<  num[x] <<  " ";}
+  cout << endl;
   return current;
 }
 
 
 int main()
 {
-  char replace = 'a', remove = 'b' , substitute = 'd'; string mystring = "ahbcbdd";
+  char replace = 'a', remove = 'b' , substitute = 'd'; string mystring = "bbbbbbbbaahhhbbcccbkdb";
   cout << DecimalToOtherBase(mystring, replace, remove, substitute) << endl;
   return 0;
 }
