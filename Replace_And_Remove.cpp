@@ -5,41 +5,43 @@
 
 using namespace std;
 
-string RemoveElement( int i, string num)
-{
-  while (num[i] != NULL) 
+string  ReplaceElement(string num, char replace, char substitute, int cr, int current)
+{ 
+  int i = current + cr;
+  while (num[i] != 0)
   {
-     num[i] = num[i +1];
-     i++; 
+    if ( num[i] == replace) { num[i] = substitute;}
+    if (num[i] != replace)
+    { 
+      if (num[i] != remove) { num[current++] = num[i];}
+    }
+    cout << num[i] << " " ;
+    i--;
   }
-  for (int x = i; x >=0; --x) { cout <<  num[x] <<  " ";}
+  
+  //cout << (int x = 0; x < current; x++) { cout <<  num[x] <<  " ";}
   cout << endl;
   return num;
 }
 
-int DecimalToOtherBase(string num, char replace, char remove, char substitute)
+int RemoveElement(string num, char replace, char remove, char substitute)
 { 
-  string tempVec[32];
-  int i = 0, countReplace = 0, current = 0, next = current + 1;
+  int i = 0, cr = 0, current = 0;
   while (num[i] != NULL) 
   {
-    if (num[i] == remove) 
-    { 
-      num = RemoveElement( i, num);
-      i = i-1;
-    }
+    if ( num[i] == replace) { cr +=2; }
+    if (num[i] != remove) { num[current++] = num[i];}
     i++; 
   }
-  //tempVec[i] = num[i];
-  for (int x = 0; x < i; x++) { cout <<  num[x] <<  " ";}
-  cout << endl;
+  //num = ReplaceElement( num, replace, substitute, cr, current);
+  for (int x = 0; x < current; x++) { cout <<  num[x] <<  " ";}
+  cout << "cr " << cr << endl;
   return current;
 }
 
-
 int main()
 {
-  char replace = 'a', remove = 'b' , substitute = 'd'; string mystring = "bbbbbbbbaahhhbbcccbkdb";
-  cout << DecimalToOtherBase(mystring, replace, remove, substitute) << endl;
+  char replace = 'a', remove = 'b' , substitute = 'd'; string mystring = "aahhhbbcbbbbbbbaabbbbbbccbkdb";
+  cout << RemoveElement(mystring, replace, remove, substitute) << endl;
   return 0;
 }
