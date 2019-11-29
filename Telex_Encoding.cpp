@@ -12,39 +12,6 @@ string Decode_Element(string MyString, string Code)
   }
   return MyString;
 }
-/*
-string Replace_Elements(string MyString, int cm, int dt, int ep, int qm)
-{
-  string comma = "COMA", dot = "DOT", ques_mark =  "QUESTION MARK", exc_point = "EXCLAMATION POINT";
-  
-  int Num_Punc = cm + dt + ep + qm;
-  
-  int i = MyString.size() - Num_Punc;
-  while (MyString[i] != NULL) 
-  {
-    MyString[i] = '0';
-    i++; 
-  }
-  
-  MyString = Decode_Element(MyString, comma);
-  MyString = Decode_Element(MyString, dot);
-  MyString = Decode_Element(MyString, ques_mark);
-  MyString = Decode_Element(MyString, exc_point);
-  
-  return MyString;
-}
-
-string Remove_Single_Element(string num, char remove)
-{ 
-  int i = 0, cr = 0, current = 0;
-  while (num[i] != NULL) 
-  {
-    //if ( num[i] == replace) { cr++;} //cout << current << "   ";
-    if (num[i] != remove) { num[current++] = num[i];}
-    i++; 
-  }
-  return num;
-}*/
 string Move_To_Front(string MyString)
 {
   char Point = '.', Coma = ',', Ques_Mark = '?', Exc_Point = '!';
@@ -55,32 +22,82 @@ string Move_To_Front(string MyString)
    { MyString[current++] = MyString[i];}
    i++; 
   }
-  //MyString = Remove_Single_Element(MyString,Point); 
-  
   return MyString;
 }
+
+string  ReplaceElement(string MyString, int count_char)
+{ 
+  string comma = "COMA", dot = "DOT", ques_mark =  "QUESTION MARK", exc_point = "EXCLAMATION POINT";
+  char Point = '.', Coma = ',', Ques_Mark = '?', Exc_Point = '!';
+  int i = MyString.size() -1 -count_char, next =  MyString.size() -1;
+  while (i >= 0) 
+  {
+    if (MyString[i] != Coma && MyString[i] != Point && MyString[i] != Ques_Mark && MyString[i] != Exc_Point)
+    { 
+      MyString[next--] = MyString[i]; 
+    }
+    else if (MyString[i] == Coma)
+    {
+       for (int j = comma.size()-1; j >= 0 ; j--)
+       {
+         MyString[next--] = comma[j];
+       }
+    }
+    else if (MyString[i] == Point)
+    {
+       for (int j = dot.size()-1; j >= 0 ; j--)
+       {
+         MyString[next--] = dot[j];
+       }
+    }
+    else if (MyString[i] == Ques_Mark)
+    {
+       for (int j = ques_mark.size()-1; j >= 0 ; j--)
+       {
+         MyString[next--] = ques_mark[j];
+       }
+    }
+    else if (MyString[i] == Exc_Point)
+    {
+       for (int j = exc_point.size()-1; j >= 0 ; j--)
+       {
+         MyString[next--] = exc_point[j];
+       }
+    }
+    i--; 
+  }
+  return MyString; 
+}
+
 string Count_Punctuations(string MyString)
 {
   int cm = 0, dt = 0, ep = 0, qm = 0;
   string comma = "COMA", dot = "DOT", ques_mark =  "QUESTION MARK", exc_point = "EXCLAMATION POINT";
-  int i = 0;
+  int i = 0, count_char = 0;
   while (MyString[i] != NULL)
   {
-    if (MyString[i] == '.') {      dt++; MyString = Decode_Element(MyString, dot); }
-    else if (MyString[i] == ',') { cm++;  MyString = Decode_Element(MyString, comma); }
-    else if (MyString[i] == '?') { qm++;  MyString = Decode_Element(MyString, ques_mark); }
-    else if (MyString[i] == '!') { ep++;  MyString = Decode_Element(MyString, exc_point); }
+    if (MyString[i] == '.') {      dt++;  count_char += dot.size(); }
+    else if (MyString[i] == ',') { cm++;  count_char += comma.size();}
+    else if (MyString[i] == '?') { qm++;  count_char += ques_mark.size();}
+    else if (MyString[i] == '!') { ep++;  count_char += exc_point.size();}
     i++;
   }
   int Num_Punc = cm + dt + ep + qm;
+  // Extend length of the string to add more characters.
+  for (int j= 0; j < count_char; j++)
+  {
+    MyString += '0';
+  }
   
-  MyString = Move_To_Front(MyString);
+  MyString = ReplaceElement(MyString, count_char);
+  cout << count_char << endl;
+  //MyString = Move_To_Front(MyString);
   return MyString;
 }
 
 int main()
 {
-  string MyString = "Telex encoding? That, in itself is fun! Trust me. I am 31 years old.";
+  string MyString = "Telex encoding? That, in itself is fun! ...Trust me. I am 31 years old.";
   cout << MyString << endl;
   cout << Count_Punctuations(MyString) << endl;
   return 0;
