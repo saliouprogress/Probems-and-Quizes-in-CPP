@@ -13,7 +13,7 @@ struct Node* head = NULL;
 
 void insert_node( int new_data)
 {
-   Node* new_node;// = (Node*)(malloc(sizeof(struct Node))); // create a memory for this node. 
+   Node* new_node = (Node*)(malloc(sizeof(struct Node))); // create a memory for this node. 
    new_node -> data = new_data; // assign data to node.
    new_node -> next = head; // make the next poiter NULL
    head = new_node; //  
