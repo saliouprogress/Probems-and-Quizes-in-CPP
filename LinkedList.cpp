@@ -40,3 +40,60 @@ int main()
 
   return 0;
 }
+
+/*
+
+#include <iostream>
+
+using namespace std;
+
+struct Node { 
+	int data; 
+	struct Node* next; // Pointer to next node in SLL 
+
+};
+
+
+int main()
+{
+  Node* head = NULL;
+  Node* first = NULL;
+  Node* second = NULL;
+  Node* third = NULL;
+  
+  
+  head = new Node(); 
+  first = new Node();
+  second = new Node();
+  third = new Node();
+  
+  
+  
+  head -> data = 1;
+  head -> next = first;
+  
+  first -> data = 2;
+  first -> next = second;
+  
+  second -> data = 3;
+  second -> next = third;
+  
+  third -> data = 4;
+  third -> next = NULL;
+  
+  Node* ptr;
+  
+  ptr = head;
+  
+  while (ptr != NULL)
+  {
+    cout << ptr -> data << " ";
+    
+    ptr = ptr -> next;
+    
+  }
+  
+  return 0; 
+}
+
+*/
