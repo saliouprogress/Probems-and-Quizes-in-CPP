@@ -9,16 +9,49 @@ struct Node
   Node* next;
 };
 
-struct Node* head = NULL;
+Node* head = NULL;
+Node* tail = NULL;
 
 void insert_node( int new_data)
 {
    Node* new_node = (Node*)(malloc(sizeof(struct Node))); // create a memory for this node. 
    new_node -> data = new_data; // assign data to node.
-   new_node -> next = head; // make the next poiter NULL
-   head = new_node; //  
+   new_node -> next = NULL; // make the next poiter NULL
+   //head = new_node; // 
+   if (head == NULL) 
+   {
+     head = new_node;
+     tail = new_node;
+   }
+   else
+   {
+     tail -> next = new_node;
+     tail = new_node;
+   }
 }
 
+
+void insert_start( int new_data)
+{
+   Node* new_node = (Node*)(malloc(sizeof(struct Node))); // create a memory for this node. 
+   new_node -> data = new_data; // assign data to node.
+   new_node -> next = head; // make the next poiter NULL
+   head = new_node;
+}
+/*
+void insert_position(int pos, int value)
+{
+  Node* prev = new Node;
+  Node* post = new node;
+  prev = head;
+  for (int i = 1; i < pos; i++)
+  {
+      prev = prev -> next;
+  }
+  post -> data = value;
+  //prev -> next = 
+}
+*/
 void Display()
 {
   Node* ptr;
@@ -32,10 +65,14 @@ void Display()
 
 int main()
 {
+  insert_node(5);
+  insert_node(6);
   insert_node(7);
   insert_node(8);
-  insert_node(5);
-  insert_node(3);
+  insert_node(9);
+  insert_node(10);
+  insert_start( 11);
+  insert_node(10);
   Display();
 
   return 0;
