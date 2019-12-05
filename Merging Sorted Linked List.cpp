@@ -1,30 +1,41 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <memory> 
 using namespace std;
+
+template < typename T>
+struct ListNode
+{
+  T data;
+  shared_ptr<ListNode<T>> next;
+};
+
+void AppendNode(shared_ptr<ListNode<int>> *node, shared_ptr<ListNode<int>> *tail)
+{
+ (*tail) -> next = *node;
+  *tail = *node; 
+  *node = (*node) -> next;
+}
+
+shared_ptr<ListNode<int>> MergetwoLists( shared_ptr<ListNode<int>> L1, shared_ptr<ListNode<int>> L2)
+{
+  shared_ptr<ListNode<int>> dummy_head(new ListNode<int>);
+  auto tail = dummy_head;
+  
+  while (L1, L2)
+  {
+    AppendNode(L1 -> data <= L2 -> data ? &L1 : &L2, &tail);
+  }
+  tail -> next = L1 ? L1 : L2;
+  return dummy_head -> next;
+}
+
 
 
 int main()
 {
-  vector<int> A{1,2,3,4,5} , B{6,8,9,11,10}, C{5,9}, MergedList;
-  
-  vector<vector<int>> biglist{A,B, C};
-  
-  for (int i = 0; i <biglist.size(); i++) 
-  {
-    for (int j = 0; j < (biglist[i]).size(); j++)
-    {
-      int temp = (biglist[i])[j];
-      MergedList.push_back(temp);
-    }
-  }
-  sort(MergedList.begin(), MergedList.end());
-  
-  for (int i = 0; i < MergedList.size(); i++)
-  {
-    cout << MergedList[i] << endl;
-  }
-
+ 
 
   return 0;
 }
