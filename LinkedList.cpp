@@ -38,20 +38,24 @@ void insert_start( int new_data)
    new_node -> next = head; // make the next poiter NULL
    head = new_node;
 }
-/*
+
 void insert_position(int pos, int value)
 {
   Node* prev = new Node;
-  Node* post = new node;
-  prev = head;
+  Node* current = new Node;
+  Node* post = new Node;
+  current = head;
   for (int i = 1; i < pos; i++)
   {
-      prev = prev -> next;
+     prev = current; 
+     current = current -> next;
   }
+  prev -> next = post;
   post -> data = value;
-  //prev -> next = 
+	
+  post -> next = current;
 }
-*/
+
 void Display()
 {
   Node* ptr;
@@ -72,7 +76,8 @@ int main()
   insert_node(9);
   insert_node(10);
   insert_start( 11);
-  insert_node(10);
+  //insert_node(10);
+  insert_position(3, 3);
   Display();
 
   return 0;
