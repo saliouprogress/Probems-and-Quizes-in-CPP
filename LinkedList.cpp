@@ -30,6 +30,20 @@ void insert_node( int new_data)
    }
 }
 
+void delete_at_position(int pos)
+{
+   Node* prev = new Node;
+   Node* current = new Node;
+   current = head;
+   for (int i = 1; i < pos; i++)
+   {
+     prev = current; 
+     current = current -> next;
+   }
+   prev -> next = prev -> next -> next;
+   delete current;
+	
+}
 
 void insert_start( int new_data)
 {
@@ -76,7 +90,7 @@ int main()
   insert_node(9);
   insert_node(10);
   insert_start( 11);
-  //insert_node(10);
+  delete_at_position(5);
   insert_position(3, 3);
   Display();
 
