@@ -33,7 +33,6 @@ void push(shared_ptr<ListNode<int>> head_ref, int new_data)
 	head_ref = new_node; //cout << head_ref -> data << " ";
 } 
 
-
 shared_ptr<ListNode<int>> MergetwoLists( shared_ptr<ListNode<int>> L1, shared_ptr<ListNode<int>> L2)
 {
   shared_ptr<ListNode<int>> dummy_head(new ListNode<int>);
