@@ -4,8 +4,9 @@ using namespace std;
 
 struct node
 {
-  int data;
-  node *next;
+
+    int data;
+    node *next;
 };
 
 node *head = NULL;
@@ -23,7 +24,7 @@ class list
     }
 };	
 
-void createnode(int value)
+node* createnode(int value)
 {
   node *temp = new node;
   temp-> data = value;
@@ -39,6 +40,7 @@ void createnode(int value)
     tail -> next = temp;
     tail = temp;
   }
+  return tail;
 }
 
 void display()
@@ -128,7 +130,6 @@ int main()
   
   display();
   
-  list list1;
 
   return 0;
 }
