@@ -3,9 +3,9 @@
 
 using namespace std;
 
-class Node
+struct Node
 {
-  public:
+  //public:
   int data;
   Node* next;
 };
